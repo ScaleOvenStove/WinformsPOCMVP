@@ -32,7 +32,7 @@ namespace WinformsPOCMVP.Business
         public IList<CustomerListViewModel> GetCustomerList()
         {
             return (from c in _repository.QueryAll().ToList()
-                    select new CustomerListViewModel(c.Id, c.CompanyName)).ToList();
+                    select new CustomerListViewModel(c.Id.ToString(), c.CompanyName)).ToList();
         }
 
         public bool Save(Customer customer)

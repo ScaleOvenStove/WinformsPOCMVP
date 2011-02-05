@@ -8,6 +8,7 @@ namespace WinformsPOCMVP.Business
     {
         Customer GetCustomerById(Guid id);
         IList<Customer> GetAllCustomers();
+        IList<CustomerListViewModel> GetCustomerList();
         bool Save(Customer customer);
     }
 }

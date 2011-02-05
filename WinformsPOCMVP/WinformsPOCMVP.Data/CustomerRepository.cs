@@ -31,9 +31,9 @@ namespace WinformsPOCMVP.Data
 
         private IList<Customer> PopulateCustomerList()
         {
-            return new List<Customer>
-            {
-                new Customer
+            var customerList = new List<Customer>();
+
+            customerList.Add(new Customer
                     {
                         Id = new Guid("6F2BF47B-1A4F-4D7D-AE21-DB14ECF40444"),
                         CustomerAccountType = CustomerAccountType.Individual,
@@ -50,47 +50,47 @@ namespace WinformsPOCMVP.Data
                         State = "MN",
                         ZipCode = "94837",
                         Country = "USA"
-                    }
-            };
+                    });
 
-                             //        new Customer
-                             //        {
-                             //            Id = new Guid("6F2BF47B-09KI-87UH-AE21-DB14ECF40444"),
-                             //            CustomerAccountType = CustomerAccountType.Individual,
-                             //            FirstName = "Billy",
-                             //            LastName = "Johnson",
-                             //            CompanyName = "Ajax",
-                             //            EmailAddress = "bill_johnson@Ajax.net",
-                             //            PhoneOne = "564-3425-7867",
-                             //            PhoneTwo = "456-689-4563",
-                             //            AccountNumber = "g9r8efo4j84009",
-                             //            MailingAddressOne = "W. 7876",
-                             //            MailingAddressTwo = "2nd Floor",
-                             //            City = "Eastgate",
-                             //            State = "MN",
-                             //            ZipCode = "94455",
-                             //            Country = "USA"
-                             //        },
+            customerList.Add(new Customer
+                    {
+                        Id = new Guid("0D89B22B-97D4-4D1D-901D-A42198AF8FEC"),
+                        CustomerAccountType = CustomerAccountType.Individual,
+                        FirstName = "Ralph",
+                        LastName = "Peterson",
+                        CompanyName = "MGT Global",
+                        EmailAddress = "rpeterson@mgtg.com",
+                        PhoneOne = "584-845-1548",
+                        PhoneTwo = "584-845-3659",
+                        AccountNumber = "viv8e804489jr0o",
+                        MailingAddressOne = "9087 West Ally",
+                        MailingAddressTwo = string.Empty,
+                        City = "Northham",
+                        State = "MN",
+                        ZipCode = "94848",
+                        Country = "USA"
+                    });
+            
+            customerList.Add(new Customer
+                    {
+                        Id = new Guid("436B3B33-BA39-4315-BE82-20D24347AB9A"),
+                        CustomerAccountType = CustomerAccountType.Individual,
+                        FirstName = "Billy",
+                        LastName = "Johnson",
+                        CompanyName = "Ajax",
+                        EmailAddress = "bill_johnson@Ajax.net",
+                        PhoneOne = "564-3425-7867",
+                        PhoneTwo = "456-689-4563",
+                        AccountNumber = "g9r8efo4j84009",
+                        MailingAddressOne = "W. 7876",
+                        MailingAddressTwo = "2nd Floor",
+                        City = "Eastgate",
+                        State = "MN",
+                        ZipCode = "94455",
+                        Country = "USA"
+                    });
 
-                             //        new Customer
-                             //        {
-                             //            Id = new Guid("6F2BF47B-IK45-LL34-AE21-DB14ECF40444"),
-                             //            CustomerAccountType = CustomerAccountType.Individual,
-                             //            FirstName = "Ralph",
-                             //            LastName = "Peterson",
-                             //            CompanyName = "MGT Global",
-                             //            EmailAddress = "rpeterson@mgtg.com",
-                             //            PhoneOne = "584-845-1548",
-                             //            PhoneTwo = "584-845-3659",
-                             //            AccountNumber = "viv8e804489jr0o",
-                             //            MailingAddressOne = "9087 West Ally",
-                             //            MailingAddressTwo = string.Empty,
-                             //            City = "Northham",
-                             //            State = "MN",
-                             //            ZipCode = "94848",
-                             //            Country = "USA"
-                             //        }
-                             //};
+            return customerList;
         }
     }
 }

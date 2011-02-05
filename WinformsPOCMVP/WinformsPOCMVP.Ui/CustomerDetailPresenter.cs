@@ -19,10 +19,16 @@ namespace WinformsPOCMVP.Ui
 
         public void Initialize()
         {
+            _view.BeginViewUpdate();
+
             if(_viewMode == ViewMode.Edit)
             {
                 RetrieveAndBindModel(new Guid("6F2BF47B-1A4F-4D7D-AE21-DB14ECF40444"));
             }
+
+            _view.CustomersSelectList = _service.GetCustomerList();
+
+            _view.EndViewUpdate();
         }
 
         private void RetrieveAndBindModel(Guid id)
@@ -44,6 +50,11 @@ namespace WinformsPOCMVP.Ui
             _view.EmailAddress = model.EmailAddress;
 
             _view.EndViewUpdate();
+        }
+
+        internal void ShowCustomerDetails()
+        {
+            
         }
     }
 }

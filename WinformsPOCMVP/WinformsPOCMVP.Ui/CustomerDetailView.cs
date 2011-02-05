@@ -7,7 +7,7 @@ namespace WinformsPOCMVP.Ui
 {
     public partial class CustomerDetailView : Form, ICustomerDetailView
     {
-        private CustomerDetailPresenter _presenter;
+        private CustomerDetailPresenter Presenter { get; set; }
 
         public CustomerDetailView()
         {
@@ -16,8 +16,8 @@ namespace WinformsPOCMVP.Ui
 
         private void CustomerDetailView_Load(object sender, EventArgs eventArgs)
         {
-            _presenter = new CustomerDetailPresenter(this);
-            //_presenter.Initialize();
+            Presenter = new CustomerDetailPresenter(this);
+            Presenter.Initialize();
         }
 
         public bool IsIndividualCustomer
@@ -117,11 +117,13 @@ namespace WinformsPOCMVP.Ui
         public void BeginViewUpdate()
         {
             //disable event handling
+            CustomerListComboBox.SelectedIndexChanged -= CustomerListComboBox_SelectedIndexChanged;
         }
 
         public void EndViewUpdate()
         {
             //enable event handling
+            CustomerListComboBox.SelectedIndexChanged += CustomerListComboBox_SelectedIndexChanged;
         }
 
         public string CustomerAccountTypeText
@@ -129,14 +131,34 @@ namespace WinformsPOCMVP.Ui
             set { AccountTypeLabel.Text = value; }
         }
         
+        //public IList<CustomerListViewModel> CustomersSelectList
+        //{
+        //    set
+        //    {
+        //        CustomerListComboBox.DisplayMember = "CompanyName";
+        //        CustomerListComboBox.ValueMember = "Id";
+        //        CustomerListComboBox.DataSource = value;
+        //    }
+        //}
+
         public IList<CustomerListViewModel> CustomersSelectList
         {
-            set { CustomerListComboBox.DataSource = value; }
+            set
+            {
+                CustomerListBox.DataSource = value;
+                CustomerListBox.DisplayMember = "CompanyName";
+                CustomerListBox.ValueMember = "Id";
+            }
         }
 
-        public Guid SelectedCustomer
+        public CustomerListViewModel SelectedCustomer
         {
-            get { return (Guid)CustomerListComboBox.SelectedValue; }
+            get { return (CustomerListViewModel)CustomerListComboBox.SelectedValue; }
+        }
+
+        private void CustomerListComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Presenter.ShowCustomerDetails();
         }
 
     }

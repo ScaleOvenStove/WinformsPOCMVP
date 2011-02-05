@@ -59,6 +59,7 @@
             this.PhoneTwoLabel = new System.Windows.Forms.Label();
             this.PhoneOneLabel = new System.Windows.Forms.Label();
             this.PhoneOneTextBox = new System.Windows.Forms.TextBox();
+            this.CustomerListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // AccountTypeLabel
@@ -127,6 +128,7 @@
             this.CustomerListComboBox.Name = "CustomerListComboBox";
             this.CustomerListComboBox.Size = new System.Drawing.Size(163, 21);
             this.CustomerListComboBox.TabIndex = 7;
+            this.CustomerListComboBox.SelectedIndexChanged += new System.EventHandler(this.CustomerListComboBox_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -312,11 +314,20 @@
             this.PhoneOneTextBox.Size = new System.Drawing.Size(100, 20);
             this.PhoneOneTextBox.TabIndex = 27;
             // 
+            // CustomerListBox
+            // 
+            this.CustomerListBox.FormattingEnabled = true;
+            this.CustomerListBox.Location = new System.Drawing.Point(355, 12);
+            this.CustomerListBox.Name = "CustomerListBox";
+            this.CustomerListBox.Size = new System.Drawing.Size(177, 17);
+            this.CustomerListBox.TabIndex = 31;
+            // 
             // CustomerDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 498);
+            this.Controls.Add(this.CustomerListBox);
             this.Controls.Add(this.PhoneTwoTextBox);
             this.Controls.Add(this.PhoneTwoLabel);
             this.Controls.Add(this.PhoneOneLabel);
@@ -389,5 +400,6 @@
         private System.Windows.Forms.Label PhoneTwoLabel;
         private System.Windows.Forms.Label PhoneOneLabel;
         private System.Windows.Forms.TextBox PhoneOneTextBox;
+        private System.Windows.Forms.ListBox CustomerListBox;
     }
 }
