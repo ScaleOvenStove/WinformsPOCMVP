@@ -59,7 +59,8 @@
             this.PhoneTwoLabel = new System.Windows.Forms.Label();
             this.PhoneOneLabel = new System.Windows.Forms.Label();
             this.PhoneOneTextBox = new System.Windows.Forms.TextBox();
-            this.CustomerListBox = new System.Windows.Forms.ListBox();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AccountTypeLabel
@@ -132,6 +133,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.SaveButton);
             this.groupBox1.Location = new System.Drawing.Point(13, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(563, 446);
@@ -314,20 +316,21 @@
             this.PhoneOneTextBox.Size = new System.Drawing.Size(100, 20);
             this.PhoneOneTextBox.TabIndex = 27;
             // 
-            // CustomerListBox
+            // SaveButton
             // 
-            this.CustomerListBox.FormattingEnabled = true;
-            this.CustomerListBox.Location = new System.Drawing.Point(355, 12);
-            this.CustomerListBox.Name = "CustomerListBox";
-            this.CustomerListBox.Size = new System.Drawing.Size(177, 17);
-            this.CustomerListBox.TabIndex = 31;
+            this.SaveButton.Location = new System.Drawing.Point(311, 408);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.TabIndex = 0;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CustomerDetailView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 498);
-            this.Controls.Add(this.CustomerListBox);
             this.Controls.Add(this.PhoneTwoTextBox);
             this.Controls.Add(this.PhoneTwoLabel);
             this.Controls.Add(this.PhoneOneLabel);
@@ -362,6 +365,7 @@
             this.Name = "CustomerDetailView";
             this.Text = "CustomerDetailView";
             this.Load += new System.EventHandler(this.CustomerDetailView_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,6 +404,6 @@
         private System.Windows.Forms.Label PhoneTwoLabel;
         private System.Windows.Forms.Label PhoneOneLabel;
         private System.Windows.Forms.TextBox PhoneOneTextBox;
-        private System.Windows.Forms.ListBox CustomerListBox;
+        private System.Windows.Forms.Button SaveButton;
     }
 }

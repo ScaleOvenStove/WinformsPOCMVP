@@ -14,7 +14,7 @@ namespace WinformsPOCMVP.Ui
         {
             _view = view;
             _service = new CustomerService();
-            Initialize();
+            //Initialize();
         }
 
         public void Initialize()

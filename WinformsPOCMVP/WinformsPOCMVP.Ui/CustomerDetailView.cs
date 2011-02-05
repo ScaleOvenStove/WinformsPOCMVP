@@ -104,25 +104,36 @@ namespace WinformsPOCMVP.Ui
             set { CountryTextBox.Text = value; }
         }
 
+        #region Button Click Event Handlers
         public void Cancel()
         {
             throw new NotImplementedException();
         }
 
-        public void Save()
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Save();
         }
 
+        public void Save()
+        {
+            //Presenter;
+        }
+        #endregion
+
+        /// <summary>
+        /// disable event handling
+        /// </summary>
         public void BeginViewUpdate()
         {
-            //disable event handling
             CustomerListComboBox.SelectedIndexChanged -= CustomerListComboBox_SelectedIndexChanged;
         }
 
+        /// <summary>
+        /// enable event handling
+        /// </summary>
         public void EndViewUpdate()
         {
-            //enable event handling
             CustomerListComboBox.SelectedIndexChanged += CustomerListComboBox_SelectedIndexChanged;
         }
 
@@ -130,27 +141,18 @@ namespace WinformsPOCMVP.Ui
         {
             set { AccountTypeLabel.Text = value; }
         }
-        
-        //public IList<CustomerListViewModel> CustomersSelectList
-        //{
-        //    set
-        //    {
-        //        CustomerListComboBox.DisplayMember = "CompanyName";
-        //        CustomerListComboBox.ValueMember = "Id";
-        //        CustomerListComboBox.DataSource = value;
-        //    }
-        //}
 
         public IList<CustomerListViewModel> CustomersSelectList
         {
             set
             {
-                CustomerListBox.DataSource = value;
-                CustomerListBox.DisplayMember = "CompanyName";
-                CustomerListBox.ValueMember = "Id";
+                CustomerListComboBox.DisplayMember = "CompanyName";
+                CustomerListComboBox.ValueMember = "Id";
+                CustomerListComboBox.DataSource = value;
             }
         }
 
+       
         public CustomerListViewModel SelectedCustomer
         {
             get { return (CustomerListViewModel)CustomerListComboBox.SelectedValue; }
@@ -158,7 +160,7 @@ namespace WinformsPOCMVP.Ui
 
         private void CustomerListComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Presenter.ShowCustomerDetails();
+            Presenter.ShowCustomerDetails();
         }
 
     }

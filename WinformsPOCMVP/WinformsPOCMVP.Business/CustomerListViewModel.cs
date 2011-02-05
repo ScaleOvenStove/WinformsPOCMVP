@@ -4,8 +4,8 @@ namespace WinformsPOCMVP.Business
 {
     public class CustomerListViewModel
     {
-        string Id { get; set; }
-        string CompanyName { get; set; }
+        public string Id { get; set; }
+        public string CompanyName { get; set; }
 
         public CustomerListViewModel(string id, string companyName)
         {
