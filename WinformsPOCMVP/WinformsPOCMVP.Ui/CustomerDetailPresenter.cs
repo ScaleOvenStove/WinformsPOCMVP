@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WinformsPOCMVP.Business;
 using WinformsPOCMVP.Domain;
 
@@ -8,25 +9,20 @@ namespace WinformsPOCMVP.Ui
     {
         private ICustomerDetailView _view;
         private ICustomerService _service;
-        private ViewMode _viewMode = ViewMode.Edit;
-
+        
         public CustomerDetailPresenter(ICustomerDetailView view)
         {
             _view = view;
             _service = new CustomerService();
-            //Initialize();
         }
 
         public void Initialize()
         {
             _view.BeginViewUpdate();
 
-            if(_viewMode == ViewMode.Edit)
-            {
-                RetrieveAndBindModel(new Guid("6F2BF47B-1A4F-4D7D-AE21-DB14ECF40444"));
-            }
-
-            _view.CustomersSelectList = _service.GetCustomerList();
+            IList<CustomerListViewModel> customerList = _service.GetCustomerList();
+            customerList.Insert(0, new CustomerListViewModel(new Guid(), "Choose a company..."));
+            _view.CustomersSelectList = customerList;
 
             _view.EndViewUpdate();
         }
@@ -46,6 +42,7 @@ namespace WinformsPOCMVP.Ui
             _view.City = model.City;
             _view.State = model.State;
             _view.ZipCode = model.ZipCode;
+            _view.Country = model.Country;
             _view.CompanyName = model.CompanyName;
             _view.EmailAddress = model.EmailAddress;
 
@@ -54,7 +51,27 @@ namespace WinformsPOCMVP.Ui
 
         internal void ShowCustomerDetails()
         {
-            
+            RetrieveAndBindModel(_view.SelectedCustomer);
+        }
+
+        internal void UpdateCustomer()
+        {
+            Customer model = new Customer();
+            model.Id = _view.SelectedCustomer;
+            model.FirstName = _view.FirstName;
+            model.LastName = _view.LastName;
+            model.CustomerAccountType = 
+                (_view.IsIndividualCustomer)?CustomerAccountType.Individual:CustomerAccountType.Company;
+            model.AccountNumber = _view.AccountNumber;
+            model.MailingAddressOne = _view.MailingAddressOne;
+            model.MailingAddressTwo = _view.MailingAddressTwo;
+            model.City = _view.City;
+            model.State = _view.State;
+            model.ZipCode = _view.ZipCode;
+            model.Country = _view.Country;
+            model.CompanyName = _view.CompanyName;
+            model.EmailAddress = _view.EmailAddress;
+            _service.Save(model);
         }
     }
 }

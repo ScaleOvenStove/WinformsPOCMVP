@@ -4,10 +4,10 @@ namespace WinformsPOCMVP.Business
 {
     public class CustomerListViewModel
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string CompanyName { get; set; }
 
-        public CustomerListViewModel(string id, string companyName)
+        public CustomerListViewModel(Guid id, string companyName)
         {
             Id = id;
             CompanyName = companyName;

@@ -10,7 +10,7 @@ namespace WinformsPOCMVP.Ui
         bool IsIndividualCustomer { get; set; }
         string CustomerAccountTypeText { set; }
         IList<CustomerListViewModel> CustomersSelectList { set; }
-        CustomerListViewModel SelectedCustomer { get; }
+        Guid SelectedCustomer { get; }
         string FirstName { get; set; }
         string LastName { get; set; }
         string CompanyName { get; set; }

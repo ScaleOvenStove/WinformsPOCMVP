@@ -117,7 +117,7 @@ namespace WinformsPOCMVP.Ui
 
         public void Save()
         {
-            //Presenter;
+            //Presenter.UpdateCustomer();
         }
         #endregion
 
@@ -153,9 +153,9 @@ namespace WinformsPOCMVP.Ui
         }
 
        
-        public CustomerListViewModel SelectedCustomer
+        public Guid SelectedCustomer
         {
-            get { return (CustomerListViewModel)CustomerListComboBox.SelectedValue; }
+            get { return (Guid)CustomerListComboBox.SelectedValue; }
         }
 
         private void CustomerListComboBox_SelectedIndexChanged(object sender, EventArgs e)
