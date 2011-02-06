@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using WinformsPOCMVP.Business;
 using WinformsPOCMVP.Domain;
 
-namespace WinformsPOCMVP.Ui
+namespace WinformsPOCMVP.Presentation
 {
     public class CustomerDetailPresenter
     {
@@ -49,12 +49,12 @@ namespace WinformsPOCMVP.Ui
             View.EndViewUpdate();
         }
 
-        internal void ShowCustomerDetails()
+        public void ShowCustomerDetails()
         {
             RetrieveAndBindModel(View.SelectedCustomer);
         }
 
-        internal void UpdateCustomer()
+        public void UpdateCustomer()
         {
             var model = new Customer
                             {

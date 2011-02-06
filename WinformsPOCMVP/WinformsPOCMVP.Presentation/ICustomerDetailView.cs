@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using WinformsPOCMVP.Business;
 
-namespace WinformsPOCMVP.Ui
+namespace WinformsPOCMVP.Presentation
 {
     public interface ICustomerDetailView
     {
