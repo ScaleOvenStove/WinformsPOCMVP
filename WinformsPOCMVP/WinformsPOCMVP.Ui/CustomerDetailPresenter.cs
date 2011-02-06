@@ -7,71 +7,76 @@ namespace WinformsPOCMVP.Ui
 {
     public class CustomerDetailPresenter
     {
-        private ICustomerDetailView _view;
-        private ICustomerService _service;
+        private ICustomerDetailView View { get; set; }
+        private ICustomerService Service { get; set; }
         
         public CustomerDetailPresenter(ICustomerDetailView view)
         {
-            _view = view;
-            _service = new CustomerService();
+            View = view;
+            Service = new CustomerService();
         }
 
         public void Initialize()
         {
-            _view.BeginViewUpdate();
+            View.BeginViewUpdate();
 
-            IList<CustomerListViewModel> customerList = _service.GetCustomerList();
+            IList<CustomerListViewModel> customerList = Service.GetCustomerList();
             customerList.Insert(0, new CustomerListViewModel(new Guid(), "Choose a company..."));
-            _view.CustomersSelectList = customerList;
+            View.CustomersSelectList = customerList;
 
-            _view.EndViewUpdate();
+            View.EndViewUpdate();
         }
 
         private void RetrieveAndBindModel(Guid id)
         {
-            Customer model = _service.GetCustomerById(id);
+            Customer model = Service.GetCustomerById(id);
 
-            _view.BeginViewUpdate();
+            View.BeginViewUpdate();
 
-            _view.FirstName = model.FirstName;
-            _view.LastName = model.LastName;
-            _view.IsIndividualCustomer = (model.CustomerAccountType == CustomerAccountType.Individual);
-            _view.AccountNumber = model.AccountNumber;
-            _view.MailingAddressOne = model.MailingAddressOne;
-            _view.MailingAddressTwo = model.MailingAddressTwo;
-            _view.City = model.City;
-            _view.State = model.State;
-            _view.ZipCode = model.ZipCode;
-            _view.Country = model.Country;
-            _view.CompanyName = model.CompanyName;
-            _view.EmailAddress = model.EmailAddress;
+            View.FirstName = model.FirstName;
+            View.LastName = model.LastName;
+            View.IsIndividualCustomer = (model.CustomerAccountType == CustomerAccountType.Individual);
+            View.AccountNumber = model.AccountNumber;
+            View.MailingAddressOne = model.MailingAddressOne;
+            View.MailingAddressTwo = model.MailingAddressTwo;
+            View.City = model.City;
+            View.State = model.State;
+            View.ZipCode = model.ZipCode;
+            View.Country = model.Country;
+            View.CompanyName = model.CompanyName;
+            View.EmailAddress = model.EmailAddress;
 
-            _view.EndViewUpdate();
+            View.EndViewUpdate();
         }
 
         internal void ShowCustomerDetails()
         {
-            RetrieveAndBindModel(_view.SelectedCustomer);
+            RetrieveAndBindModel(View.SelectedCustomer);
         }
 
         internal void UpdateCustomer()
         {
-            Customer model = new Customer();
-            model.Id = _view.SelectedCustomer;
-            model.FirstName = _view.FirstName;
-            model.LastName = _view.LastName;
-            model.CustomerAccountType = 
-                (_view.IsIndividualCustomer)?CustomerAccountType.Individual:CustomerAccountType.Company;
-            model.AccountNumber = _view.AccountNumber;
-            model.MailingAddressOne = _view.MailingAddressOne;
-            model.MailingAddressTwo = _view.MailingAddressTwo;
-            model.City = _view.City;
-            model.State = _view.State;
-            model.ZipCode = _view.ZipCode;
-            model.Country = _view.Country;
-            model.CompanyName = _view.CompanyName;
-            model.EmailAddress = _view.EmailAddress;
-            _service.Save(model);
+            var model = new Customer
+                            {
+                                Id = View.SelectedCustomer,
+                                FirstName = View.FirstName,
+                                LastName = View.LastName,
+                                CustomerAccountType =
+                                    (View.IsIndividualCustomer)
+                                        ? CustomerAccountType.Individual
+                                        : CustomerAccountType.Company,
+                                AccountNumber = View.AccountNumber,
+                                MailingAddressOne = View.MailingAddressOne,
+                                MailingAddressTwo = View.MailingAddressTwo,
+                                City = View.City,
+                                State = View.State,
+                                ZipCode = View.ZipCode,
+                                Country = View.Country,
+                                CompanyName = View.CompanyName,
+                                EmailAddress = View.EmailAddress
+                            };
+
+            Service.Save(model);
         }
     }
 }

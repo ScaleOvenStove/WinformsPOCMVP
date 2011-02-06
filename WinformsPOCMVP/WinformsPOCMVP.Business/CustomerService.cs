@@ -8,11 +8,11 @@ namespace WinformsPOCMVP.Business
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ICustomerRepository _repository;
+        private ICustomerRepository Respository { get; set; }
 
         public CustomerService(ICustomerRepository repository)
         {
-            _repository = repository;
+            Respository = repository;
         }
 
         public CustomerService()
@@ -21,23 +21,23 @@ namespace WinformsPOCMVP.Business
 
         public Customer GetCustomerById(Guid id)
         {
-            return _repository.FetchBy(id);
+            return Respository.FetchBy(id);
         }
 
         public IList<Customer> GetAllCustomers()
         {
-            return _repository.FetchAll();
+            return Respository.FetchAll();
         }
 
         public IList<CustomerListViewModel> GetCustomerList()
         {
-            return (from c in _repository.QueryAll().ToList()
+            return (from c in Respository.QueryAll().ToList()
                     select new CustomerListViewModel(c.Id, c.CompanyName)).ToList();
         }
 
         public bool Save(Customer customer)
         {
-            return true;
+            return Respository.Update(customer);
         }
     }
 }

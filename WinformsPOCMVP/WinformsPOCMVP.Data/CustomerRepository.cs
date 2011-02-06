@@ -92,5 +92,10 @@ namespace WinformsPOCMVP.Data
 
             return customerList;
         }
+
+        public bool Update(Customer customer)
+        {
+            return true;
+        }
     }
 }

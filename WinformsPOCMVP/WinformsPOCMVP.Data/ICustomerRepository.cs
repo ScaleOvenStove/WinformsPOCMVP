@@ -10,5 +10,6 @@ namespace WinformsPOCMVP.Data
         Customer FetchBy(Guid id);
         IList<Customer> FetchAll();
         IQueryable<Customer> QueryAll();
+        bool Update(Customer customer);
     }
 }
